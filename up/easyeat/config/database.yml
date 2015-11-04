@@ -3,23 +3,32 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
+ default: &default
+   adapter: postgresql
+   pool: 5
+   timeout: 5000
+   host: localhost
+   #host: ec2-107-21-219-201.compute-1.amazonaws.com
+   encoding: unicode
+   username: easyeat
+   #username: pmwoyozlkvnvwx   
+   password: 1234
+   #password: A7mWy0gmVOsSolPDt97PDZa8dS
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+ development:
+   <<: *default
+   database: db/easyeat_dev
+   #database: db/d12lvork7al0e
+
+ # Warning: The database defined as "test" will be erased and
+ # re-generated from your development database when you run "rake".
+ # Do not set this db to the same as development or production.
+ test:
+   <<: *default
+   database: db/easyeat_test
+
+ production:
+   <<: *default
+   database: db/easyeat_prod
