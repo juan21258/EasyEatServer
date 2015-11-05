@@ -27,17 +27,17 @@ public class App {
         }
         setPort(port);
 
-        DaoTest daoTest = new DaoTest();
-        final String dbTestString = daoTest.testDb();
+        //DaoTest daoTest = new DaoTest();
+        //final String dbTestString = daoTest.testDb();
         ArrayList<String> datos = new ArrayList<>();
         get("/", (request, response) -> "<html><head><h1>Hello World!</h1></head><body>"
-            + "<h2>" + dbTestString + "</h2>" + "</body></html>");
+            + "<h2>" + "</h2>" + "</body></html>");
         post("/echo", (request, response) -> {
             datos.add(request.queryParams("text"));
             return "";
         });
         get("/echo", (request, response) -> {
-            String aux = "";
+            String aux = "Pedidos: <br/>";
             for(String text:datos){
                 aux+=(text+"<br/>\n");
             }
