@@ -30,14 +30,14 @@ public class App {
         //DaoTest daoTest = new DaoTest();
         //final String dbTestString = daoTest.testDb();
         ArrayList<String> datos = new ArrayList<>();
-        get("/", (request, response) -> "<html><head><h1>Hello World!</h1></head><body>"
+        get("/", (request, response) -> "<html><head><h1>Hello World!</h1></head><body bgcolor=\"#e34234\">"
             + "<h2>" + "</h2>" + "</body></html>");
         post("/echo", (request, response) -> {
             datos.add(request.queryParams("text"));
             return "";
         });
         get("/echo", (request, response) -> {
-            String aux = "Pedidos: <br/>";
+            String aux = "<center><h1>Pedidos:</h1></center> <br/>";
             for(String text:datos){
                 aux+=(text+"<br/>\n");
             }
