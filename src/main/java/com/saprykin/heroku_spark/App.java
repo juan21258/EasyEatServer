@@ -3,6 +3,7 @@ package com.saprykin.heroku_spark;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.ArrayList;
 
 import static spark.Spark.*;
 
@@ -24,7 +25,7 @@ public class App {
 
         DaoTest daoTest = new DaoTest();
         final String dbTestString = daoTest.testDb();
-
+        ArrayList<String> datos = new ArrayList<>();
         get("/", (request, response) -> "<html><head><h1>Hello World!</h1></head><body>"
             + "<h2>" + dbTestString + "</h2>" + "</body></html>");
         post("/echo", (request, response) -> {
