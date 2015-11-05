@@ -40,7 +40,7 @@ public class App {
             String aux = "<html><head><center><h1>Sistema de Pedidos</h1></center></head><body bgcolor=\"#e34234\">"
             + "<h1>" +"Pedidos en cola:" + "</h1>" + "</body></html>";
             for(String text:datos){
-                aux+=(text+"<br/>\n");
+                aux+=(text.substring(1, text.length())+"<br/>\n");
             }
             return aux;
         });
