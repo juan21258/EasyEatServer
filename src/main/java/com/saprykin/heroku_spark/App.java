@@ -44,6 +44,12 @@ public class App {
             }
             return aux;
         });
+        get("/echo/clean", (request, response) -> {
+            String aux = "<html><head><center><h1>Eliminado</h1></center></head><body bgcolor=\"#e34234\">"
+            + "<h1>" +"" + "</h1>" + "</body></html>";
+            datos.clear();
+            return aux;
+        });
         get("/demo", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("message", "Hello World!");
