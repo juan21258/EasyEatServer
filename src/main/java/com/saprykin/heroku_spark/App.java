@@ -11,7 +11,7 @@ import static spark.Spark.*;
 public class App {
 
     public static void main(String[] args) {
-
+        
         //Heroku assigns different port each time, hence reading it from process.
         ProcessBuilder process = new ProcessBuilder();
         Integer port;
@@ -25,7 +25,19 @@ public class App {
         DaoTest daoTest = new DaoTest();
         final String dbTestString = daoTest.testDb();
 
-        get("/hello", (request, response) -> "<html><head><h1>Hello World!</h1></head><body>" + "<h2>" + dbTestString + "</h2>" + "</body></html>");
+        get("/", (request, response) -> "<html><head><h1>Hello World!</h1></head><body>"
+            + "<h2>" + dbTestString + "</h2>" + "</body></html>");
+        post("/echo", (request, response) -> {
+            datos.add(request.queryParams("text"));
+            return "";
+        });
+        get("/echo", (request, response) -> {
+            String aux = "";
+            for(String text:datos){
+                aux+=(text+"<br/>\n");
+            }
+            return aux;
+        });
     }
 
 
