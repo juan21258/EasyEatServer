@@ -37,7 +37,7 @@ public class App {
             return "";
         });
         get("/echo", (request, response) -> {
-            String aux = "<html><head><center><h1>Sistema de Pedidos</h1></center></head><body bgcolor=\"#e34234\">"
+            String aux = "<html><head><center><h1>Sistema de Pedidos jajajajajajaja</h1></center></head><body bgcolor=\"#e34234\">"
             + "<h1>" +"Pedidos en cola:" + "</h1>" + "</body></html>";
             for(String text:datos){
                 aux+=(text.substring(1, text.length()-1)+"<br/>\n");
