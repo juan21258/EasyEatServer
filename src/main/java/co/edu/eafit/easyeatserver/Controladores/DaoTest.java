@@ -62,7 +62,6 @@ public class DaoTest {
                     res.append("<br>");
                 }
             }
-
             result = res.toString();
 
         } catch(SQLException e) {

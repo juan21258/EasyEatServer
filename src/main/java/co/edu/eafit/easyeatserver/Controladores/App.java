@@ -16,7 +16,17 @@ import spark.template.freemarker.FreeMarkerEngine;
 public class App {
 
     public static void main(String[] args) {
+
         
+
+        /*try{
+            Desktop.getDesktop().browse(new URI();
+        } catch (URISyntaxException ex) {
+            System.out.println(ex);
+        }catch(IOException e){
+            System.out.println(e);
+        }*/
+        /*
         //Heroku assigns different port each time, hence reading it from process.
         ProcessBuilder process = new ProcessBuilder();
         Integer port;
@@ -30,8 +40,9 @@ public class App {
         //DaoTest daoTest = new DaoTest();
         //final String dbTestString = daoTest.testDb();
         ArrayList<String> datos = new ArrayList<>();
-        get("/", (request, response) -> "<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+        get("/", (request, response) -> "<html><head><h1>API: Soy lindo EasyEat</h1></head><body bgcolor=\"#e34234\">"
             + "<h2>" + "</h2>" + "</body></html>");
+
         post("/echo", (request, response) -> {
             datos.add(request.queryParams("text"));
             return "";
@@ -58,6 +69,8 @@ public class App {
             // src/test/resources/spark/template/freemarker
             return new ModelAndView(attributes, "hello.ftl");
         }, new FreeMarkerEngine());
+        */
+    get("/index", (req, res) -> "Hello World");
     }
 
 
