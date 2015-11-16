@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import spark.ModelAndView;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 import static spark.Spark.*;
@@ -14,11 +19,18 @@ import spark.template.freemarker.FreeMarkerEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
 // heroku auth:token
+@WebServlet("/loginServlet")
+public class Main extends HttpServlet{
 
-public class Main {
+    protected void doPost(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException {
+        String producto = request.getParameter("producto");
+       
+    }
 
     public static void main(String[] args) {
         
+        Colocar col = new doPost();
         //Heroku assigns different port each time, hence reading it from process.
         ProcessBuilder process = new ProcessBuilder();
         Integer port;
@@ -75,6 +87,20 @@ public class Main {
             }
             return aux;
         });
+
+        post("/form", (request, response) -> {
+            datos.add(request.queryParams("producto"));
+            return "";
+        });
+        get("/form", (request, response) -> {
+            String aux = "<html><head><center><h1>Sistema de Productos: </h1></center></head><body bgcolor=\"#e34234\">"
+            + "<h1>" +"Productos:" + "</h1>" + "</body></html>";
+            for(String producto:datos){
+                aux+=(producto.substring(1, producto.length()-1)+"<br/>\n");
+            }
+            return aux;
+        });
+
         get("/echo/clean", (request, response) -> {
             String aux = "<html><head><center><h1>Eliminado</h1></center></head><body bgcolor=\"#e34234\">"
             + "<h1>" +"" + "</h1>" + "</body></html>";
