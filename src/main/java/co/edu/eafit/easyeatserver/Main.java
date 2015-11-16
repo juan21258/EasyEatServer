@@ -1,4 +1,4 @@
-package com.saprykin.heroku_spark;
+//package com.saprykin.heroku_spark;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 import spark.ModelAndView;
 
+
 import static spark.Spark.*;
 import spark.template.freemarker.FreeMarkerEngine;
+import spark.template.velocity.VelocityTemplateEngine;
 
 // heroku auth:token
 
-public class App {
+public class Main {
 
     public static void main(String[] args) {
         
@@ -30,8 +32,37 @@ public class App {
         //DaoTest daoTest = new DaoTest();
         //final String dbTestString = daoTest.testDb();
         ArrayList<String> datos = new ArrayList<>();
-        get("/", (request, response) -> "<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
-            + "<h2>" + "</h2>" + "</body></html>");
+        
+        get("/", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/index-1", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index-1.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/index-2", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index-2.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/index", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index-3.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/index-4", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index-4.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/index-5", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+            + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
+            return new ModelAndView(new HashMap(),"Vistas/site/index-5.ftl.html");
+        }, new VelocityTemplateEngine());
+        
         post("/echo", (request, response) -> {
             datos.add(request.queryParams("text"));
             return "";
