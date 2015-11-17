@@ -29,7 +29,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <appName> easyeat</appName>
+                    <appName> easyeatserver</appName>
                 </configuration>
                 <executions>
                     <execution>
