@@ -52,6 +52,7 @@
             <artifactId>spark-core</artifactId>
             <version>2.3</version>
             <type>jar</type>
+<<<<<<< HEAD
         </dependency>
         <dependency> 
             <groupId>org.sql2o</groupId> 
@@ -62,6 +63,8 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId> 
             <version>9.4-1201-jdbc41</version> 
+=======
+>>>>>>> d6574dd496beebbe641a876ba15ea342756a48c5
         </dependency>
         <dependency>
             <groupId>com.sparkjava</groupId>
