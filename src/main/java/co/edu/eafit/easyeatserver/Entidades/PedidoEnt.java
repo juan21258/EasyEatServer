@@ -1,4 +1,4 @@
-package co.edu.eafit.easyeat.Entidades;
+package co.edu.eafit.easyeatserver.Entidades;
 
 /**
  * Created by Julian on 12/11/2015.
