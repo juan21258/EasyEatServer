@@ -1,5 +1,6 @@
 //package com.saprykin.heroku_spark;
 
+import com.google.gson.Gson;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
@@ -7,11 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import spark.ModelAndView;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import co.edu.eafit.easyeatserver.Entidades.*;
 
 
 import static spark.Spark.*;
@@ -19,19 +16,12 @@ import spark.template.freemarker.FreeMarkerEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
 // heroku auth:token
-@WebServlet("/loginServlet")
-public class Main extends HttpServlet{
 
-    protected void doPost(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException, IOException {
-        String producto = request.getParameter("producto");
-       
-    }
+public class Main {
 
     public static void main(String[] args) {
         
-        Colocar col = new doPost();
-        //Heroku assigns different port each time, hence reading it from process.
+        //Heroku assigns different port each time, hence reading it from process.        
         ProcessBuilder process = new ProcessBuilder();
         Integer port;
         if(process.environment().get("PORT") != null) {
@@ -47,7 +37,22 @@ public class Main extends HttpServlet{
         
         get("/", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
             + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
-            return new ModelAndView(new HashMap(),"Vistas/site/index.ftl.html");
+            String nombre=request.queryParams("nombre");
+            String precio=request.queryParams("precio");
+            String tiempo=request.queryParams("tiempo");
+            String categoria=request.queryParams("categoria");
+            return new ModelAndView(new HashMap(),"Vistas/site/FormProducto.ftl.html");
+        }, new VelocityTemplateEngine());
+        
+        get("/crearproducto", (request, response) -> {
+            Gson gson=new Gson();
+            String nombre=request.queryParams("nombre");
+            String precio=request.queryParams("precio");
+            String tiempo=request.queryParams("tiempo");
+            String categoria=request.queryParams("categoria");
+            ProductoEnt producto = new ProductoEnt(1,nombre,Integer.parseInt(precio),Integer.parseInt(tiempo),categoria);
+            System.out.println(gson.toJson(producto));
+            return new ModelAndView(new HashMap(),"Vistas/site/FormProducto.ftl.html");
         }, new VelocityTemplateEngine());
         
         get("/index-1", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
@@ -60,7 +65,7 @@ public class Main extends HttpServlet{
             return new ModelAndView(new HashMap(),"Vistas/site/index-2.ftl.html");
         }, new VelocityTemplateEngine());
         
-        get("/index", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
+        get("/index-3", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
             + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
             return new ModelAndView(new HashMap(),"Vistas/site/index-3.ftl.html");
         }, new VelocityTemplateEngine());
@@ -87,20 +92,6 @@ public class Main extends HttpServlet{
             }
             return aux;
         });
-
-        post("/form", (request, response) -> {
-            datos.add(request.queryParams("producto"));
-            return "";
-        });
-        get("/form", (request, response) -> {
-            String aux = "<html><head><center><h1>Sistema de Productos: </h1></center></head><body bgcolor=\"#e34234\">"
-            + "<h1>" +"Productos:" + "</h1>" + "</body></html>";
-            for(String producto:datos){
-                aux+=(producto.substring(1, producto.length()-1)+"<br/>\n");
-            }
-            return aux;
-        });
-
         get("/echo/clean", (request, response) -> {
             String aux = "<html><head><center><h1>Eliminado</h1></center></head><body bgcolor=\"#e34234\">"
             + "<h1>" +"" + "</h1>" + "</body></html>";
