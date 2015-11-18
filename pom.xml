@@ -29,6 +29,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appName> easyeatserver</appName>
                 </configuration>
                 <executions>
                     <execution>
@@ -51,6 +52,19 @@
             <artifactId>spark-core</artifactId>
             <version>2.3</version>
             <type>jar</type>
+<<<<<<< HEAD
+        </dependency>
+        <dependency> 
+            <groupId>org.sql2o</groupId> 
+            <artifactId>sql2o</artifactId> 
+            <version>1.5.4</version> 
+        </dependency>
+        <dependency> 
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId> 
+            <version>9.4-1201-jdbc41</version> 
+=======
+>>>>>>> d6574dd496beebbe641a876ba15ea342756a48c5
         </dependency>
         <dependency>
             <groupId>com.sparkjava</groupId>
