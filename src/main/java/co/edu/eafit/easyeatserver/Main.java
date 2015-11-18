@@ -33,8 +33,7 @@ public class Main {
 
         //DaoTest daoTest = new DaoTest();
         //final String dbTestString = daoTest.testDb();
-        ArrayList<String> datos = new ArrayList<>();
-        
+        ArrayList<String> datos = new ArrayList<>();        
         get("/", (request, response) ->{ /*"<html><head><h1>API: EasyEat)</h1></head><body bgcolor=\"#e34234\">"
             + "<h2>" + "</h2>" + "<p>fjaf</p>" + "</body></html>")*/
             String nombre=request.queryParams("nombre");
@@ -107,6 +106,4 @@ public class Main {
             return new ModelAndView(attributes, "hello.ftl");
         }, new FreeMarkerEngine());
     }
-
-
 }
